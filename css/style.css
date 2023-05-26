@@ -1,0 +1,621 @@
+@charset "UTF-8";
+
+
+/* Base
+ ================================= */
+
+ *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: sans-serif;
+}
+
+section {
+    text-align: center;
+}
+
+.concept,.works,.florist,.shop-info{
+    margin-bottom: 120px;
+}
+
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+h2 {
+    font-size: 4rem;
+    padding: 120px 0 30px 0;
+    color: #2b2b2b;
+    display: inline-block;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 5px;/*線の上下位置*/
+    display: inline-block;
+    width: 35px;/*線の長さ*/
+    height: 1px;/*線の太さ*/
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);/*位置調整*/
+    background-color: black;/*線の色*/
+  }
+
+h3 {
+    font-size: 2.5rem;
+    color: #2b2b2b;
+    font-family: 'Poppins', sans-serif;
+}
+
+p {
+    line-height: 3rem;
+    letter-spacing: 1px;
+}
+
+.title-under-text {
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+ul,li {
+    list-style: none;
+}
+
+
+/* header KV
+ ================================= */
+
+ .header {
+     background-image: url(../images/header@2x.png);
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     height: 620px;
+ }
+
+ .title-text {
+     font-size: 12rem;
+     font-family: 'Myriad Pro', sans-serif;
+     font-weight: lighter;
+     color: #fff;
+     position: absolute;
+     top: 40%;
+     left: 50%;
+     transform: translateY(-50%) translateX(-50%);
+     -webkit- transform: translateY(-50%) translateX(-50%);
+ }
+
+ .title-text-sub {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     font-size: 2.2rem;
+     color: #fff;
+     transform: translateY(-50%) translateX(-50%);
+     -webkit- transform: translateY(-50%) translateX(-50%);
+ }
+
+ .kv-text {
+     position: relative;
+     text-align: center;
+     height: 580px;
+ }
+
+ .header-nav {
+     position: absolute;
+     top: 40px;
+     left: 0;
+     width: 100%;
+     height: 65px;
+ }
+
+ .header-nav-wrapper {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .header-logo {
+     font-size: 3.6rem;
+     color: #fff;
+ }
+ 
+
+
+ /*　ハンバーガーボタン　*/
+.hamburger {
+    display : block;
+    position: relative;
+    z-index : 3;
+    right : 0px;
+    top   : 0px;
+    width : 42px;
+    height: 42px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .hamburger span {
+    display : block;
+    position: absolute;
+    width   : 30px;
+    height  : 2px ;
+    left    : 6px;
+    background : #fff;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition   : 0.3s ease-in-out;
+    transition        : 0.3s ease-in-out;
+  }
+
+  .hamburger span:nth-child(1) {
+    top: 10px;
+  }
+  .hamburger span:nth-child(2) {
+    top: 20px;
+  }
+  .hamburger span:nth-child(3) {
+    top: 30px;
+  }
+  
+  /* ナビ開いてる時のボタン */
+  .hamburger.active span:nth-child(1) {
+    top : 16px;
+    left: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform   : rotate(-45deg);
+    transform        : rotate(-45deg);
+  }
+  
+  .hamburger.active span:nth-child(2),
+  .hamburger.active span:nth-child(3) {
+    top: 16px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform   : rotate(45deg);
+    transform        : rotate(45deg);
+  }
+  
+  nav.global-menu {
+    position: fixed;
+    z-index : 2;
+    top  : 0;
+    left : 0;
+    color: #000;
+    background: rgba(255,255,255,0);
+    text-align: center;
+    transform: translateY(-100%);
+    transition: all 0.6s;
+    width: 100%;
+    height: 100vh;
+    padding-top: 100px;
+  }
+  
+  nav.global-menu ul {
+    background:rgba(255,255,255,0.9);
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+  }
+  
+  nav.global-menu ul li {
+    list-style-type: none;
+    padding: 20px 0;
+    width: 100%;
+    border-bottom: 1px solid #ededed;
+  }
+  nav.global-menu ul li:last-child {
+    padding-bottom: 20px;
+    border-bottom: none;
+  }
+  nav.global-menu ul li:hover{
+    background :#fff;
+  }
+  
+  nav.global-menu ul li a {
+    display: block;
+    color: #000;
+    padding: 1em 0;
+    text-decoration :none;
+  }
+  
+  /* このクラスを、jQueryで付与・削除する */
+  nav.global-menu.active {
+    transform: translateY(0%);
+  }
+
+/* トップへ戻るボタン */
+
+#page_top{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background: #2b2b2b;
+    opacity: 0.6;
+    border-radius: 50%;
+  }
+  #page_top a{
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+  }
+  #page_top a::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f106';
+    font-size: 25px;
+    color: #fff;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -5px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+  }
+
+
+ /* Concept
+ ================================= */
+
+.concept-bottom {
+    display: flex;
+    height: 560px;
+    align-items: center;
+    text-align: center;
+    background-image: linear-gradient(to top, #ededed 50%, #fff 50%);
+}
+
+.concept-img {
+    max-width: 955px;
+    margin: 0 auto;
+}
+
+
+/* Works
+ ================================= */
+
+.works-wrapper {
+    display: block;
+}
+
+.works-contents {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+    height: 1680px;
+}
+
+.works-item {
+    max-width: 420px;
+    text-align: justify;
+    padding-bottom: 80px;
+}
+
+.works-item:nth-child(1) {
+    order: 1;
+}
+
+.works-item:nth-child(2) {
+    order: 3;
+    margin-top: 120px;
+}
+
+.works-item:nth-child(3) {
+    order: 2;
+}
+
+.works-item:nth-child(4) {
+    order: 4;
+}
+
+.works-item-title {
+     padding-top: 30px;
+ }
+
+
+ /* Florist
+ ================================= */
+
+.florist {
+    background-image: linear-gradient(to bottom, #ededed 60%, #fff 40%);
+}
+ 
+.florist-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.florist-member {
+    text-align: justify;
+    max-width: 300px;
+}
+
+ .florist-member img{
+     max-width: 300px;
+     height: auto;
+     object-fit: cover;
+     margin-bottom: 30px;
+ }
+
+
+
+
+  /* Shop information
+ ================================= */
+
+ .shop-info-wrapper {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+ }
+
+ .info-img img {
+     width: 500px;
+     object-fit: cover;
+ }
+
+ .info-table {
+     text-align: left;
+     letter-spacing: 1px;
+     border-spacing: 0 20px;
+ }
+
+ .info-table td{
+     padding: 0 25px;
+ }
+
+.table-add {
+    border-left: 1px solid #2b2b2b;
+}
+
+
+
+   /* Contact us
+ ================================= */
+
+.contact {
+    background-image: url(../images/contact_us@2x.png);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-color: rgba(255,255,255,0.5);
+    background-blend-mode: soft-light;
+}
+
+ .contact-btn {
+     display: flex;
+     align-items: center;
+     width: 350px;
+     height: 80px;
+     margin: 0 auto;
+     border: solid 1px #ccc;
+     background-color: #fff;
+ }
+
+.btn-text {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin: 50px auto;
+    vertical-align: bottom;
+}
+
+ .btn-text::before {
+     content:"";
+     display: inline-block;
+     width: 35px;
+     height: 35px;
+     background: url(../images/831_ma_h.png) no-repeat;
+     background-size: contain;
+     margin-right: 1rem;
+    }
+
+
+   /* Footer
+ ================================= */
+
+ .footer {
+     display: flex;
+     height: 100px;
+     text-align: center;
+     align-items: center;
+ }
+
+
+    /* media SP
+ ================================= */
+
+ @media (max-width: 750px) {
+
+body {
+     font-size: 1.5rem;
+     font-family: sans-serif;
+}
+
+.content-wrapper {
+     margin: 0 auto;
+     width: 90%;
+     min-width: 300px;
+}
+
+.br-pc {
+    display: none;
+}
+
+.title-under-text {
+    padding-bottom: 35px;
+    text-align: left;
+    text-align: justify;
+}
+
+/* header KV SP
+ ================================= */
+
+.title-text {
+    font-size: 7rem;
+    font-family: 'Myriad Pro', sans-serif;
+    font-weight: lighter;
+    color: #fff;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit- transform: translateY(-50%) translateX(-50%);
+}
+
+.title-text-sub {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    font-size: 1.4rem;
+    color: #fff;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit- transform: translateY(-50%) translateX(-50%);
+}
+
+
+
+ /* Concept SP
+ ================================= */
+
+ .concept-img img{
+     object-fit: contain;
+     width: 90%;
+ }
+
+ .concept-bottom {
+     height: 300px;
+ }
+
+ /* Works SP
+ ================================= */
+
+ .works-contents {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: auto;
+}
+
+.works-item {
+    max-width: 300px;
+}
+
+.works-item img {
+    max-width: 300px;
+}
+
+.works-item:nth-child(1) {
+    order: 1;
+}
+
+.works-item:nth-child(2) {
+    order: 2;
+    margin: 0 0 0 auto;
+}
+
+.works-item:nth-child(3) {
+    order: 3;
+}
+
+.works-item:nth-child(4) {
+    order: 4;
+    margin: 0 0 0 auto;
+}
+
+
+ /* Florist SP
+ ================================= */
+
+.florist {
+    background-image: linear-gradient(to bottom, #ededed 30%, #fff 80%);
+}
+
+.florist-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.florist-member {
+    margin: 0 auto;
+    margin-bottom: 80px;
+    max-width: 100%;
+    min-width: 300px;
+}
+
+.florist-member img {
+    max-width: 100%;
+    min-width: 300px;
+}
+
+ .florist-member img{
+     object-fit: scale-down;
+     margin-bottom: 30px;
+ }
+
+  /* Shop information SP
+ ================================= */
+
+.shop-info-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-img img {
+    max-width: 100%;
+    min-width: 300px;
+    height: auto;
+    object-fit: cover;
+}
+
+
+   /* Contact us
+ ================================= */
+
+ .contact-btn {
+     display: flex;
+     align-items: center;
+     width: 250px;
+     height: 60px;
+     margin: 0 auto;
+     border: solid 1px #ccc;
+     background-color: #fff;
+ }
+
+.btn-text {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin: 50px auto;
+    vertical-align: bottom;
+}
+
+ .btn-text::before {
+     content:"";
+     display: inline-block;
+     width: 25px;
+     height: 25px;
+     background: url(../images/831_ma_h.png) no-repeat;
+     background-size: contain;
+     margin-right: 1rem;
+    }
+
+
+
+ }
